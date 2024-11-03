@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Compressed Images</title>
+</head>
+<body>
+    <h2>Compressed Images</h2>
+    <ul>
+        {% for image in images %}
+            <li>
+                <strong>Original Image:</strong> 
+                <a href="{{ image.image.url }}">{{ image.image.name }}</a> <br>
+                <strong>Compressed Image:</strong> 
+                <a href="{{ image.compressed_image.url }}">{{ image.compressed_image.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

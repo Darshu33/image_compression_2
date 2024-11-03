@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compression and Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        input[type="file"], input[type="submit"], select {
+            padding: 10px;
+            font-size: 1em;
+            margin: 10px 0;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: rgb(191, 151, 197);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #905798;
+        }
+        
+        h1 {
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <img src="{% static 'images/image.png' %}" alt="Krazy Square" />
+
+    <h1>Image Compression with Pixel Preserve</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- Display the form fields -->
+
+        <label for="size">Select Image Size:</label>
+        <select name="size" id="size">
+            <option value="10">10%</option>
+            <option value="20">20%</option>
+            <option value="30">30%</option>
+            <option value="40">40%</option>
+            <option value="50">50%</option>
+            <option value="60">60%</option>
+            <option value="70">70%</option>
+            <option value="80" selected>80%</option>
+            <option value="90">90%</option>
+            <option value="100">100%</option>
+        </select>
+        
+
+        <input type="submit" value="Upload and Compress">
+    </form>
+
+</body>
+</html>
